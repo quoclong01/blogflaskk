@@ -1,0 +1,205 @@
+{% extends 'base.html' %} {% block content %}
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      font-size: 16px;
+      font-family: "Poppins", sans-serif;
+      line-height: 2;
+      overflow-x: hidden;
+      background: rgb(238, 174, 202);
+      background: radial-gradient(
+        circle,
+        rgba(238, 174, 202, 1) 0%,
+        rgba(148, 187, 233, 1) 100%
+      );
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    button {
+      outline: 0;
+      border: 0;
+    }
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .testi {
+      margin: 0px;
+    }
+
+    .testi-item {
+      margin-top: 20px;
+      display: flex;
+      gap: 0 30px;
+    }
+
+    .card {
+      width: 33.33%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #d3d3d3;
+      padding: 50px 30px;
+      border-radius: 20px;
+    }
+
+    .card-image {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+    }
+
+    .card-name {
+      margin-top: 10px;
+      font-weight: 600;
+    }
+
+    .card-class {
+      color: gray;
+      font-size: 15px;
+      margin-bottom: 15px;
+    }
+
+    .card-desc {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .card-social {
+      display: flex;
+      gap: 0 10px;
+      font-size: 22px;
+    }
+
+    .card-link {
+      color: #000;
+    }
+
+    .card-link:hover {
+      color: gray;
+    }
+
+    .container {
+      max-width: 1350px;
+      padding: 0 15px;
+      margin: 0 auto;
+    }
+    .heading {
+      text-transform: uppercase;
+      font-size: 32px;
+      font-weight: 600;
+      text-align: center;
+      position: relative;
+    }
+    .title {
+      color: grey;
+    }
+  </style>
+</head>
+<section class="testi" id="testi">
+  <div class="container">
+    <div class="testi-main">
+      <div class="heading">
+        Hello everybody, today we feel so good <br />
+        Blog Founders
+      </div>
+      <div class="testi-item">
+        <div class="card">
+          <img
+            src="{{ url_for('static', filename='images/huy.png')}}"
+            alt="Dinh Huy"
+            class="card-image"
+          />
+          <h3 class="card-name">Trương Đình Huy</h3>
+          <div class="card-class">19TCLC_Nhat1</div>
+          <p class="card-desc">
+            “Cuộc sống không phải là một vấn đề cần giải quyết, mà là thực tế để
+            chúng ta cần trải nghiệm”
+          </p>
+          <p class="title">Art Director</p>
+          <div class="card-social">
+            <a href="#" class="card-link"><i class="bx bxl-facebook"></i></a>
+            <a href="#" class="card-link"><i class="bx bxl-twitter"></i></a>
+            <a href="#" class="card-link"><i class="bx bxl-instagram"></i></a>
+            <a href="#" class="card-link"><i class="bx bxl-linkedin"></i></a>
+          </div>
+        </div>
+        <div class="card">
+          <img
+            src="{{ url_for('static', filename='images/dat.png')}}"
+            alt="Thanh Dat"
+            class="card-image"
+          />
+          <h3 class="card-name">Trương Công Thành Đạt</h3>
+          <div class="card-class">19TCLC_Nhat1</div>
+          <p class="card-desc">
+            “Chúng ta không thể nhớ những ngày đã qua, nhưng chúng ta có thể nhớ
+            những khoảnh khắc”
+          </p>
+          <p class="title">Designer</p>
+          <div class="card-social">
+            <a href="#" class="card-link"><i class="bx bxl-facebook"></i></a>
+            <a href="#" class="card-link"><i class="bx bxl-twitter"></i></a>
+            <a href="#" class="card-link"><i class="bx bxl-instagram"></i></a>
+            <a href="#" class="card-link"><i class="bx bxl-linkedin"></i></a>
+          </div>
+        </div>
+        <div class="card">
+          <img
+            src="{{ url_for('static', filename='images/long.png')}}"
+            alt="Quoc Long"
+            class="card-image"
+          />
+          <h3 class="card-name">Ngô Đắc Quốc Long</h3>
+          <div class="card-class">19TCLC_Nhat1</div>
+          <p class="card-desc">
+            “Khi bạn thay thế những suy nghĩ tiêu cực bằng suy nghĩ tích cực,
+            bạn sẽ nhận được những kết quả tích cực”
+          </p>
+          <p class="title">CEO & Founder</p>
+          <div class="card-social">
+            <a href="#" class="card-link"><i class="bx bxl-facebook"></i></a>
+            <a href="#" class="card-link"><i class="bx bxl-twitter"></i></a>
+            <a href="#" class="card-link"><i class="bx bxl-instagram"></i></a>
+            <a href="#" class="card-link"><i class="bx bxl-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,75 @@
+h1 {
+  color: darkblue;
+  font-size: 60px;
+}
+
+body {
+  /* background: rgb(34, 193, 195);
+  background: linear-gradient(
+    0deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(253, 187, 45, 1) 100%
+  ); */
+  background: rgb(238, 174, 202);
+  background: radial-gradient(
+    circle,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  font-family: "Open Sans", sans-serif;
+}
+
+#demo {
+  font-size: 12px;
+  color: darkblue;
+}
+
+.profile {
+  margin-top: 50px;
+  display: flex;
+}
+
+.profile-avt {
+  height: 300px;
+  width: 300px;
+  margin-right: 50px;
+}
+
+.profile-heading {
+  font-size: 40px;
+  color: #333;
+}
+
+.nav-container {
+  gap: 0 10px;
+}
+
+.nav-logo {
+  margin-right: 30px;
+  display: inline-block;
+}
+
+.post-name {
+  font-style: italic;
+  margin-bottom: 8px;
+}
+.post-content {
+  height: 200px;
+  border: 1px solid rgb(175, 175, 175);
+  border-radius: 10px;
+  padding: 10px 15px;
+  overflow-x: hidden;
+  margin-bottom: 20px;
+}
+.post-content p {
+  font-size: 20px;
+}
+
+.post-edit {
+  display: flex;
+  gap: 0 10px;
+}
+
+

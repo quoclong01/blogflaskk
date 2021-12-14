@@ -1,0 +1,123 @@
+{% extends 'base.html' %} {% block content %} {% for message in
+get_flashed_messages() %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  {{ message }}
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+{% endfor %}
+<br />
+{% for post in posts %}
+<div class="shadow p-4 mb-5 bg-body rounded">
+  <div class="d-flex justify-content-between align-items-center">
+    <h2>
+      <a href="{{ url_for('post', id=post.id)}}">{{ post.title }}</a>
+    </h2>
+    <div>
+      <span id="likes-count-{{post.id}}"> {{ post.likes|length }}</span>
+      {% if current_user.id in post.likes|map(attribute="author")|list %}
+      <i
+        class="fas fa-thumbs-up"
+        id="like-button-{{post.id}}"
+        onclick="like({{post.id}})"
+      ></i>
+      {% else %}
+      <i
+        class="far fa-thumbs-up"
+        id="like-button-{{post.id}}"
+        onclick="like({{post.id}})"
+      ></i>
+      {% endif %}
+    </div>
+  </div>
+  <small class="post-name"> By: {{ post.poster.name }} </small>
+  <br />
+  <small> {{ post.date_posted }}</small>
+  <br /><br />
+  <div class="post-content">{{ post.content|safe }}</div>
+  <div class="collapse" id="comments-{{post.id}}">
+    <div class="card">
+      <div class="card-body" id="comments-expanded-{{post.id}}">
+        {% for comment in post.comments %}
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <a href="/posts/{post.id}">{{comment.poster.username}}</a>:
+            {{comment.text}}
+          </div>
+          <div>
+            <small class="text-muted"> {{comment.date_created}}</small>
+            {% if current_user.id == comment.author or current_user.id ==
+            post.author %}
+            <div class="btn-group">
+              <button
+                type="button"
+                class="btn btn-sm btn-primary dropdown-toggle"
+                data-bs-toggle="dropdown"
+              ></button>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="/delete-comment/{{comment.id}}" class="dropdown-item"
+                    >Delete</a
+                  >
+                </li>
+              </ul>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <p class="card-text">
+    {% if post.comments|length > 0 %}
+    <a data-bs-toggle="collapse" href="#comments-{{post.id}}" role="button">
+      <small>View {{post.comments|length}} Comments</small>
+    </a>
+    {% else %}
+    <small class="text-muted">No Comments</small>
+    {% endif %}
+  </p>
+  <form
+    class="input-group mb-3"
+    method="POST"
+    action="/create-comment/{{post.id}}"
+  >
+    <input
+      type="text"
+      id="text"
+      name="text"
+      class="form-control"
+      placeholder="Comment something!"
+    />
+    <button type="submit" class="btn btn-primary">Comment</button>
+  </form>
+  <br />
+  <div class="post-edit">
+    <a
+      href="{{ url_for('post', id=post.id)}}"
+      class="btn btn-outline-secondary btn-sm"
+      >View Post</a
+    >
+    {% if post.author == current_user.id %}
+    <a
+      href="{{ url_for('edit_post', id=post.id)}}"
+      class="btn btn-outline-secondary btn-sm"
+      >Edit Post</a
+    >
+
+    <a
+      href="{{ url_for('delete_post', id=post.id)}}"
+      class="btn btn-outline-danger btn-sm"
+      >Delete Post</a
+    >
+
+    {% endif %}
+  </div>
+</div>
+<br />
+{% endfor %} {% endblock %}
